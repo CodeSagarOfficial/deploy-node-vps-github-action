@@ -25,11 +25,11 @@ jobs:
           EC2_USER: ${{ secrets.DEV_USER }}
         run: |
           ssh -i ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST << 'EOF'
-            cd /home/ubuntu/code/gardenstead-api
+            cd /home/ubuntu/demo/deploy-node-vps-github-action
             sudo git checkout develop
             sudo git pull origin develop
             sudo npm install
-            sudo pm2 restart gardenstead-api-4010
+            sudo pm2 restart github-action-demo
           EOF
 
       - name: Clean up
